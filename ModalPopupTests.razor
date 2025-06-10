@@ -17,7 +17,7 @@
     }
 
     [Fact]
-    public void ModalPopupWithIsOpenSetToFalseShouldRenderNothingy()
+    public void ModalPopupWithIsOpenSetToFalseShouldRenderNothing()
     {
         //Arrange
         var isOpen = false;
@@ -25,5 +25,21 @@
         
         //Assert
         Assert.True(cut.Nodes.Length == 0);
+    }
+
+
+    // Test to be sure ChildContent is rendering correctly
+    [Fact]
+    public void ModalPopupWithChildComponentShouldRenderCorrectly()
+    {
+        //Arrange
+        
+        var cut = Render(@<ModalPopup IsOpen="true">
+                            <ChildContent>
+                                <h2>Testing ModalPopup</h2>
+                            </ChildContent>
+                          </ModalPopup>);
+        //Assert
+        cut.Find(".modal-body").MarkupMatches(@<div class="modal-body"><h2>Testing ModalPopup</h2></div>);
     }
 }
