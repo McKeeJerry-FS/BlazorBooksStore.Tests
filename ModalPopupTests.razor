@@ -28,7 +28,7 @@
     }
 
 
-    // Test to be sure ChildContent is rendering correctly
+    // Test to be sure ChildContent is rendering correctly - Testing Components with RenderFragment
     [Fact]
     public void ModalPopupWithChildComponentShouldRenderCorrectly()
     {
@@ -41,5 +41,19 @@
                           </ModalPopup>);
         //Assert
         cut.Find(".modal-body").MarkupMatches(@<div class="modal-body"><h2>Testing ModalPopup</h2></div>);
+    }
+
+    // Test for components with Interaction
+    [Fact]
+    public void ClickXButtonShouldCloseTheModal(){
+        //Arrange
+        var cut = RenderComponent<ModalPopup>();
+
+        //Act
+        cut.SetParametersAndRender(parameters => parameters.Add(p => p.IsOpen, true));
+        cut.Find(".close-button").Click();
+
+        //Assert
+        Assert.True(cut.Nodes.Length == 0);
     }
 }
