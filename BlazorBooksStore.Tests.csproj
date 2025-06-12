@@ -33,7 +33,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\BlazorBooksStore.Blazor.Components\BlazorBooksStore.Blazor.Components.csproj" />
-	  <ProjectReference Include="..\BlazorBooksStore_JMJ\BlazorBooksStore.csproj" />
+	  <ProjectReference Include="..\BlazorBooksStore\BlazorBooksStore.csproj" />
 	</ItemGroup>
 
 
